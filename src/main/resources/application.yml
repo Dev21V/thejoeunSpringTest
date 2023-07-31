@@ -1,0 +1,48 @@
+server.port: 25585 # tomcat?? ?? 8091?? ??
+
+spring:
+  security:
+#    oauth2:
+#      client:
+#        registration:
+    user: # spring security ?? ???? ??
+      name: user
+      password: 1234
+  datasource:
+    url: jdbc:mariadb://im.21v.in:33306/mydb # mariadb
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: mydb
+    password: roqkf@Rhdn1
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+  jpa:
+    show-sql: true
+    defer-datasource-initialization: true # data.sql ??? ??? ????? ??
+    properties:
+      hibernate:
+        format_sql: true # sql? pretty?? ???
+        use_sql_comments: true
+    generate-ddl: true # true, false
+    hibernate:
+      ddl-auto: create # create, create-drop, update, validate, none
+  sql:
+    init:
+      mode: always
+      # always: embeded db? ?? ?? db ??? spring boot? ???? ?? data.sql schema.sql import.sql? ?? ??
+      # never: data.sql schema.sql import.sql? ???? ??
+      encoding: utf-8
+  devtools:
+    livereload:
+      enabled: true
+
+mybatis:
+  mapper-locations: mybatis-mapper/**/*.xml # mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true # camel case
+  # xml? ?? ?? ?? ????? ?? ????? ????? ??
+  type-aliases-package: me.hanbin.practice.model
+
+jwt:
+  secret: 1234
